@@ -4,10 +4,7 @@ package com.nest.course_backend.controller;
 import com.nest.course_backend.dao.CourseDao;
 import com.nest.course_backend.model.Courses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,7 @@ public class CourseController {
     @Autowired
     private CourseDao dao;
 
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public String AddCourse(@RequestBody Courses courses){
 
@@ -40,6 +38,8 @@ public class CourseController {
 
     }
 
+
+    @CrossOrigin(origins = "*")
     @GetMapping("viewAll")
     public List<Courses> ViewCourse(){
         return (List<Courses>) dao.findAll();
