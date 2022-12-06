@@ -26,4 +26,9 @@ public class CourseController {
         System.out.println(courses.getDate().toString());
         return "Course added successfully!";
     }
+
+    @GetMapping("viewAll")
+    public String ViewCourse(){
+        return "All Course page";
+    }
 }
