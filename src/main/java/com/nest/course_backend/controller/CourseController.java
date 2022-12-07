@@ -38,15 +38,19 @@ public class CourseController {
         HashMap<String, String> hashMap= new HashMap<>();
         hashMap.put("status","success");
         return hashMap;
-
-
-
     }
 
-
     @CrossOrigin(origins = "*")
-    @GetMapping("viewAll")
+    @GetMapping("/viewAll")
     public List<Courses> ViewCourse(){
         return (List<Courses>) dao.findAll();
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/search",produces = "application/json", consumes = "application/json")
+    public List<Courses> searchCourse(@RequestBody Courses c){
+        String title= String.valueOf(c.getTitle());
+        System.out.println(title);
+        return (List<Courses>) dao.SearchCourses(c.getTitle());
     }
 }
